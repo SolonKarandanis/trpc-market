@@ -11,7 +11,6 @@ export default buildConfig({
         admin: '/sell',
     },
     admin: {
-        user: 'users',
         bundler: webpackBundler(),
         meta: {
           titleSuffix: '- DigitalHippo',
