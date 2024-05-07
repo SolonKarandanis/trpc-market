@@ -6,6 +6,7 @@ import NavItems from './NavItems'
 import MobileNav from './MobileNav'
 import { buttonVariants } from './ui/button'
 import UserAccountNav from './UserAccountNav'
+import Cart from './Cart'
 
 const Navbar = () => {
     const user= null;
@@ -69,7 +70,7 @@ const Navbar = () => {
                                         </div>
                                     )}
                                     <div className='ml-4 flow-root lg:ml-6'>
-                                        {/* <Cart /> */}
+                                        <Cart />
                                     </div>
                                 </div>
                             </div>
