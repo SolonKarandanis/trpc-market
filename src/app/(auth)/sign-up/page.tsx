@@ -22,6 +22,13 @@ const SignupPage = () => {
     } = useForm<TAuthCredentialsValidator>({
         resolver:zodResolver(AuthCredentialsValidator),
     });
+    const onSubmit = ({
+        email,
+        password,
+      }: TAuthCredentialsValidator) => {
+        // mutate({ email, password })
+    }
+
     return (
         <>
             <div className='container relative flex 
@@ -44,27 +51,39 @@ const SignupPage = () => {
                                 </Link>
                         </div>
                         <div className='grid gap-6'>
-                                <form >
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className='grid gap-2'>
                                         <div className='grid gap-1 py-2'>
                                             <Label htmlFor='email' >
                                                 Email
                                             </Label>
-                                            <Input 
+                                            <Input
+                                                {...register('email')}
                                                 className={cn({
                                                     "focus-visible:ring-red-500":true
                                                 })} 
                                                 placeholder='you@example.com'/>
+                                                {errors?.email && (
+                                                    <p className='text-sm text-red-500'>
+                                                    {errors.email.message}
+                                                    </p>
+                                                )}
                                         </div>
                                         <div className='grid gap-1 py-2'>
                                             <Label htmlFor='password' >
                                                 Password
                                             </Label>
-                                            <Input 
+                                            <Input
+                                                 {...register('password')}
                                                 className={cn({
                                                     "focus-visible:ring-red-500":true
                                                 })} 
                                                 placeholder='Password'/>
+                                                {errors?.password && (
+                                                    <p className='text-sm text-red-500'>
+                                                    {errors.password.message}
+                                                    </p>
+                                                )}
                                         </div>
                                         <Button>Sign up</Button>
                                     </div>
