@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form'
 import {
     AuthCredentialsValidator,
     TAuthCredentialsValidator,
-  } from '@/lib/validators/account-credentials-validator'
+} from '@/lib/validators/account-credentials-validator'
 
 const SignupPage = () => {
     const {
