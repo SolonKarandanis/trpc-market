@@ -15,9 +15,9 @@ export const authRouter = router({
         const { docs: users } = await payload.find({
             collection: 'users',
             where: {
-            email: {
-                equals: email,
-            },
+                email: {
+                    equals: email,
+                },
             },
         })
 
