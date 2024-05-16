@@ -108,7 +108,8 @@ const SignupPage = () => {
                                                 Password
                                             </Label>
                                             <Input
-                                                 {...register('password')}
+                                                {...register('password')}
+                                                type='password'
                                                 className={cn({
                                                     "focus-visible:ring-red-500":true
                                                 })} 
