@@ -19,7 +19,6 @@ import {
 } from '@/lib/validators/account-credentials-validator'
 import { trpc } from '@/trpc/client'
 import { toast } from 'sonner'
-import { ZodError } from 'zod'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 
@@ -50,24 +49,20 @@ const SigninPage = () => {
         trpc.auth.signIn.useMutation({
             onSuccess: async () => {
                 toast.success('Signed in successfully')
-
                 router.refresh()
-
                 if (origin) {
-                router.push(`/${origin}`)
-                return
+                    router.push(`/${origin}`)
+                    return
                 }
-
                 if (isSeller) {
-                router.push('/sell')
-                return
+                    router.push('/sell')
+                    return
                 }
-
                 router.push('/')
             },
             onError: (err) => {
                 if (err.data?.code === 'UNAUTHORIZED') {
-                toast.error('Invalid email or password.')
+                    toast.error('Invalid email or password.')
                 }
             },
         })
