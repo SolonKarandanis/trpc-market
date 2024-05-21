@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from '@/components/Providers'
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             </div>
           </Providers>
         </main>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
