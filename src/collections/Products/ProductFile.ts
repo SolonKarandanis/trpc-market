@@ -27,41 +27,40 @@ const yourOwnAndPurchased: Access = async ({ req }) =>{
         .map((prod) => prod.product_files)
         .flat()
     
-    // const { docs: orders } = await req.payload.find({
-    //   collection: 'orders',
-    //   depth: 2,
-    //   where: {
-    //     user: {
-    //       equals: user.id,
-    //     },
-    //   },
-    // })
-    // const purchasedProductFileIds = orders
-    // .map((order) => {
-    //   return order.products.map((product) => {
-    //     if (typeof product === 'string')
-    //       return req.payload.logger.error(
-    //         'Search depth not sufficient to find purchased file IDs'
-    //       )
+    const { docs: orders } = await req.payload.find({
+      collection: 'orders',
+      depth: 2,
+      where: {
+        user: {
+          equals: user.id,
+        },
+      },
+    })
 
-    //     return typeof product.product_files === 'string'
-    //       ? product.product_files
-    //       : product.product_files.id
-    //   })
-    // })
-    // .filter(Boolean)
-    // .flat()
+    const purchasedProductFileIds = orders
+    .map((order) => {
+      return order.products.map((product) => {
+        if (typeof product === 'string')
+          return req.payload.logger.error(
+            'Search depth not sufficient to find purchased file IDs'
+          )
 
-    // return {
-    //   id: {
-    //     in: [
-    //       ...ownProductFileIds,
-    //       ...purchasedProductFileIds,
-    //     ],
-    //   },
-    // }
+        return typeof product.product_files === 'string'
+          ? product.product_files
+          : product.product_files.id
+      })
+    })
+    .filter(Boolean)
+    .flat()
 
-    return true;
+    return {
+      id: {
+        in: [
+          ...ownProductFileIds,
+          ...purchasedProductFileIds,
+        ],
+      },
+    }
 }
 
 export const ProductFiles: CollectionConfig ={
