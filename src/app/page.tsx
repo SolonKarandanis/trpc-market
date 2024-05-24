@@ -6,6 +6,7 @@ import {
   CheckCircle,
   Leaf,
 } from 'lucide-react'
+import ProductReel from "@/components/ProductReel";
 
 const perks = [
   {
@@ -53,6 +54,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
+      <ProductReel title="Brand New" href="/products" />
     </MaxWidthWrapper>
     <section className="border-t border-gray-200 bg-gray-50">
       <MaxWidthWrapper className="py-20">
