@@ -14,13 +14,21 @@ const AddToCartButton:FC<Props> = ({product}) => {
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-        setIsSuccess(false)
+            setIsSuccess(false)
         }, 2000)
 
         return () => clearTimeout(timeout)
     }, [isSuccess])
     return (
-        <div>AddToCartButton</div>
+        <Button
+            onClick={() => {
+                // addItem(product)
+                setIsSuccess(true)
+            }}
+            size='lg'
+            className='w-full'>
+            {isSuccess ? 'Added!' : 'Add to cart'}
+        </Button>
     )
 }
 
