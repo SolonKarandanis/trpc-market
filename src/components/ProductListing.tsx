@@ -21,7 +21,7 @@ const ProductListing:FC<ProductListingProps> = ({
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setIsVisible(true)
+            setIsVisible(true)
         }, index * 75)
 
         return () => clearTimeout(timer)
