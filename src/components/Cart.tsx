@@ -9,6 +9,7 @@ import { buttonVariants } from './ui/button';
 import Image from 'next/image';
 import { useCart } from '@/hooks/use-cart';
 import { useEffect, useState } from 'react';
+import CartItem from './CartItem';
 
 
 
@@ -47,7 +48,12 @@ const Cart = () => {
                 {itemCount > 0 ? (
                     <>
                         <div className='flex w-full flex-col pr-6'>
-                            cart items
+                            {items.map(({ product }) => (
+                                <CartItem
+                                    product={product}
+                                    key={product.id}
+                                />
+                            ))}
                         </div>
                         <div className='space-y-4 pr-6'>
                             <Separator/>
