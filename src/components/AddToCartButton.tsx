@@ -2,7 +2,7 @@
 
 import { useEffect, useState,FC } from 'react'
 import { Button } from './ui/button'
-// import { useCart } from '@/hooks/use-cart'
+import { useCart } from '@/hooks/use-cart'
 import { Product } from '@/payload-types'
 
 interface Props{
@@ -11,6 +11,7 @@ interface Props{
 
 const AddToCartButton:FC<Props> = ({product}) => {
     const [isSuccess, setIsSuccess] = useState<boolean>(false)
+    const { addItem } = useCart()
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -22,7 +23,7 @@ const AddToCartButton:FC<Props> = ({product}) => {
     return (
         <Button
             onClick={() => {
-                // addItem(product)
+                addItem(product)
                 setIsSuccess(true)
             }}
             size='lg'
